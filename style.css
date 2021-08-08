@@ -141,3 +141,5 @@ span.ball {
     z-index: 100;
     border-right: 1px solid #000;
 }
+
+p.text {position: absolute;bottom: -75px;color: #000;}
