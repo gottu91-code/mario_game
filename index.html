@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="stage">
+        <div id="mario"></div>
+        <p id="coin_1" class="coin no_1"></p>
+        <p id="coin_2" class="coin no_2"></p>
+        <p id="coin_3" class="coin no_3"></p>
+        <div id="goal">
+            <span class="ball"></span>
+        </div>
+        <div class="coin_counter"><span id="coin_num">0</span>枚</div>
+        <div class="ground"></div>
+        <div class="cloud no_1"></div>
+        <div class="cloud no_2"></div>
+        <div class="cloud no_3"></div>
+    </div>
+
+    <script>
+        const mario = document.getElementById('mario');
+        let x = 0;
+        let y = 0;
+        addEventListener('keydown',function(e) {
+            arriveGoal();
+            const keyCode = e.keyCode;
+            // 上
+            if(keyCode === 38) {
+                nowY = y;
+                maxY = y + 120;
+                const jumpUpId = setInterval(function() {
+                    y += 1;
+                    mario.style.bottom = y + 'px';
+                    getCoin();
+                    if (maxY === y) {
+                        clearInterval(jumpUpId);
+                        const jumpDownId = setInterval(function() {
+                            y -= 1;
+                            mario.style.bottom = y + 'px';
+                            if (nowY === y) {
+                                clearInterval(jumpDownId);
+                            }
+                        },6);
+                    };
+                },3);
+            }
+            // 右
+            if(keyCode === 39) {x += 10;}
+            // 左
+            if(keyCode === 37) {x -= 10;}
+            
+            mario.style.bottom = y + 'px';
+            mario.style.left = x + 'px';
+        });
+
+        const coin1 = document.getElementById('coin_1');
+        const coin1X = getComputedStyle(coin1).left.replace(/px/g,'');
+        const coin1Y = getComputedStyle(coin1).bottom.replace(/px/g,'');
+
+        const coin2 = document.getElementById('coin_2');
+        const coin2X = getComputedStyle(coin2).left.replace(/px/g,'');
+        const coin2Y = getComputedStyle(coin2).bottom.replace(/px/g,'');
+
+        const coin3 = document.getElementById('coin_3');
+        const coin3X = getComputedStyle(coin3).left.replace(/px/g,'');
+        const coin3Y = getComputedStyle(coin3).bottom.replace(/px/g,'');
+
+        const coinNum = document.getElementById('coin_num');
+
+        // コイン取得判定
+        function getCoin() {
+            if(coin1Y == y && coin1X == x) {
+                coinNum.textContent = parseInt(coinNum.textContent) + 1;
+                coin1.style.display = 'none';
+            }
+
+            if(coin2Y == y && coin2X == x) {
+                coinNum.textContent = parseInt(coinNum.textContent) + 1;
+                coin2.style.display = 'none';
+            }
+
+            if(coin3Y == y && coin3X == x) {
+                coinNum.textContent = parseInt(coinNum.textContent) + 1;
+                coin3.style.display = 'none';
+            }
+        }
+
+        // ゴール判定
+        function arriveGoal() {
+            if(x == 970) {
+                alert(`ゴール！獲得コインは${coinNum.textContent}枚だよ`);
+                window.location.reload();
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

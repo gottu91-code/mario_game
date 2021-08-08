@@ -1,0 +1,143 @@
+@charset "utf-8";
+
+.stage {
+    height: 300px;
+    background-color: #eee;
+    position: relative;
+    width: 1000px;
+    background-image: linear-gradient(180deg, #3f5cd4, #6e88ff);
+    color: #fff;
+}
+
+#mario {
+    width: 20px;
+    height: 30px;
+    background-image: linear-gradient(0deg, blue 80%, red 80%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#mario::before,#mario::after {content: '';position: absolute;top: 12px;width: 4px;height: 4px;background-color: yellow;}
+
+#mario::before {
+    left: 3px;
+}
+
+#mario::after {
+    right: 3px;
+}
+
+p.coin {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 23px;
+    background-color: yellow;
+    border-radius: 45%;
+    border-right: 1px solid #000;
+}
+
+p.coin.no_1 {
+    bottom: 90px;
+    left: 200px;
+}
+
+p#coin_2 {
+    bottom: 65px;
+    left: 500px;
+}
+
+p#coin_3 {
+    bottom: 80px;
+    left: 750px;
+}
+
+#goal {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 100%;
+}
+
+#goal::before,#goal::after {content: '';position: absolute;right: 0;left: 0;margin: auto;bottom: 0;}
+
+#goal::before {
+    width: 100%;
+    height: 25px;
+    background-color: #6d2f03;
+    z-index: 100;
+}
+
+#goal::after {
+    width: 7px;
+    height: 90%;
+    background-color: #82bb53;
+}
+
+.coin_counter::before {content: '';width: 20px;height: 23px;display: inline-block;background-color: yellow;border-radius: 45%;margin-right: 8px;border-right: 1px solid #000;}
+
+.coin_counter {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.ground {
+    position: absolute;
+    width: 100%;
+    height: 26px;
+    background-image: repeating-linear-gradient(90deg,#863a05, #863a05 30px, #fff 30px , #fff 31px);
+    bottom: -26px;
+    left: 0;
+}
+
+.cloud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border-right: 1px solid #000;
+}
+
+.cloud.no_1 {
+    width: 84px;
+    height: 43px;
+    border-radius: 30px;
+    top: 60px;
+    left: 100px;
+}
+
+.cloud.no_2 {
+    width: 80px;
+    height: 40px;
+    border-radius: 30px;
+    left: 370px;
+    top: 27px;
+}
+
+.cloud.no_3 {
+    width: 60px;
+    height: 30px;
+    border-radius: 22px;
+    left: 760px;
+    top: 63px;
+}
+
+span.ball {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: green;
+    border-radius: 50%;
+    margin: auto;
+    z-index: 100;
+    border-right: 1px solid #000;
+}
